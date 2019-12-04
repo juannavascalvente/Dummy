@@ -11,7 +11,8 @@ def createDynamicJob(jobName, nodeName, command)
                         stage("Internal stage")
                         {
 			    sh "echo ${jobName}"
-                	    sh "${command} ${jobName}"
+                	    sh "pwd"
+			    sh "ls -l"
                         }
                     }
                 }
