@@ -6,15 +6,9 @@ def createDynamicJob(jobName, nodeName, command)
     mapItem = {
                 stage("Dynamic job")
                 {
-                    node(nodeName)
-                    {
-                        stage("Internal stage")
-                        {
 			    sh "echo ${jobName}"
                 	    sh "pwd"
 			    sh "ls -l"
-                        }
-                    }
                 }
             }
 
