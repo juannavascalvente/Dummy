@@ -30,7 +30,7 @@ def returnParallelJobs()
 
 pipeline
 {
-    agent any
+    agent { label 'ubuntu' }
 
     stages
     {
