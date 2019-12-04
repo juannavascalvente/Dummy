@@ -1,11 +1,12 @@
 jobsList = ['job1', 'job2', 'job3', 'job4', 'job5', 'job6']
 
 // Create a map value that contains a stage that runs input command.
-def createDynamicJob(command)
+def createDynamicJob(jobName, command)
 {
     mapItem = {
                 stage("Dynamic job")
                 {
+			sh "echo ${jobName}"
                 	sh "${command}"
                 }
             }
@@ -20,7 +21,7 @@ def returnParallelJobs()
     for (jobName in jobsList)
     {  
         // Build job.
-        newJob = createDynamicJob("sh HelloWorld.sh")
+        newJob = createDynamicJob(jobName, "sh square_root.sh")
         jobsMap.put(jobName, newJob)
     }
 
