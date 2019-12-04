@@ -1,6 +1,6 @@
 #!/bin/sh
 i=2
-end=6000000
+end=60000
 while [ $i -le $end ]; do
 	a=4
 	b=12
