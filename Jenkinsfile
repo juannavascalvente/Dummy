@@ -1,3 +1,32 @@
+jobsList = ['job1', 'job2', 'job3', 'job4', 'job5', 'job6']
+
+// Create a map value that contains a stage that runs input command.
+def createDynamicJob(stageName, nodeName, stageDescription, command)
+{
+    mapItem = {
+                stage("Dynamic job")
+                {
+                	sh "${command}"
+                }
+            }
+
+    return mapItem
+}
+
+def returnParallelJobs()
+{
+    def jobsMap = [:]
+
+    for (jobName in jobsList)
+    {
+        // Build job.
+        newJob = createDynamicJob(jobName, "echo print job name")
+        jobsMap.put(jobName, newJob)
+    }
+
+    return jobsMap;
+}
+
 pipeline
 {
     agent any
@@ -20,7 +49,10 @@ pipeline
             }
             steps
             {
-                sh 'echo Start Several Jobs'
+                script
+                {
+                    parallel(returnParallelJobs())
+                }
             }
         }
     }
