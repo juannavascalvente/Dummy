@@ -12,8 +12,7 @@ def createDynamicJob(jobName, nodeName, command)
                         {
 			    unstash 'square_root.sh'
 			    sh "echo ${jobName}"
-                	    sh "pwd"
-			    sh "ls -l"
+			    sh "${command}"
                         }
                     }
                 }
