@@ -6,9 +6,16 @@ def createDynamicJob(jobName, nodeName, command)
     mapItem = {
                 stage("Dynamic job")
                 {
+                    node(nodeName)
+                    {
+                        stage("Internal stage")
+                        {
+			    unstash 'square_root.sh'
 			    sh "echo ${jobName}"
                 	    sh "pwd"
 			    sh "ls -l"
+                        }
+                    }
                 }
             }
 
@@ -40,6 +47,7 @@ pipeline
             steps
             {
                 sh 'echo Testing first JenkinsFile'
+		stash includes: 'square_root.sh', name: 'square_root.sh'
             }
         }
 
