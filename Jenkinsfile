@@ -6,14 +6,8 @@ def createDynamicJob(jobName, command)
     mapItem = {
                 stage("Dynamic job")
                 {
-                    node any
-                    {
-                        stage("Job inside node")
-                        {
-			    sh "echo ${jobName}"
-                	    sh "${command}"
-                        }
-                    }
+			sh "echo ${jobName}"
+                	sh "${command} ${jobName}"
                 }
             }
 
