@@ -20,7 +20,7 @@ def returnParallelJobs()
     for (jobName in jobsList)
     {  
         // Build job.
-        newJob = createDynamicJob("HelloWorld.sh")
+        newJob = createDynamicJob("sh HelloWorld.sh")
         jobsMap.put(jobName, newJob)
     }
 
