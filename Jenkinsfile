@@ -1,4 +1,4 @@
-jobsList = ['job1', 'job2', 'job3', 'job4', 'job5', 'job6']
+jobsList = ['job1', 'job2', 'job3', 'job4', 'job5', 'job6', 'job7', 'job8', 'job9', 'job10']
 
 // Create a map value that contains a stage that runs input command.
 def createDynamicJob(jobName, nodeName, command)
