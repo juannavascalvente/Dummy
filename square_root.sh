@@ -3,7 +3,7 @@ i=2
 end_outer=30000000
 while [ $i -le $end_outer ]; do
 	j=2
-	end_inner=10
+	end_inner=20
 	while [ $j -le $end_inner ]; do
 		a=4
 		b=12
