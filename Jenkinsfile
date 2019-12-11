@@ -10,7 +10,7 @@ def createDynamicJob(jobName, command)
                     {
                         stage("Internal stage")
                         {
-			    unstash '/mnt/TestData'
+			    unstash 'TestDataFolder'
 			    sh "ls -l /mnt"
 			    sh "ls -l /mnt/TestData"
 			    sh "echo ${jobName}"
@@ -50,7 +50,7 @@ pipeline
             {
                 sh 'echo Testing first JenkinsFile'
 		stash includes: 'square_root.sh', name: 'square_root.sh'
-		stash includes: '/mnt/TestData', name: '/mnt/TestData'
+		stash includes: '/mnt/TestData', name: 'TestDataFolder'
             }
         }
 
