@@ -52,6 +52,12 @@ pipeline
 
         stage('Start several jobs')
         {
+            steps
+            {
+                sh 'ls -l /mnt'
+                sh 'cat /mnt/TestData/TestData.txt'
+            }
+	    /*
             when
             {
                 anyOf { branch 'Feat_001_Start_Several_Jobs'}
@@ -62,7 +68,7 @@ pipeline
                 {
                     parallel(returnParallelJobs())
                 }
-            }
+            }*/
         }
     }
 }
