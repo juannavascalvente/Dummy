@@ -55,6 +55,8 @@ pipeline
             steps
             {
                 sh 'ls -l /mnt'
+		sh 'mount -a'
+                sh 'ls -l /mnt'
                 sh 'cat /mnt/TestData/TestData.txt'
             }
 	    /*
