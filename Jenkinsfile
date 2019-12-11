@@ -10,8 +10,11 @@ def createDynamicJob(jobName, command)
                     {
                         stage("Internal stage")
                         {
-			    unstash 'square_root.sh'
+			    unstash '/mnt/TestData'
+			    sh "ls -l /mnt"
+			    sh "ls -l /mnt/TestData"
 			    sh "echo ${jobName}"
+			    unstash 'square_root.sh'
 			    sh "${command}"
                         }
                     }
@@ -47,18 +50,20 @@ pipeline
             {
                 sh 'echo Testing first JenkinsFile'
 		stash includes: 'square_root.sh', name: 'square_root.sh'
+		stash includes: '/mnt/TestData', name: '/mnt/TestData'
             }
         }
 
         stage('Start several jobs')
         {
+/*
             steps
             {
                 sh 'ls -l /mnt'
 		sh 'ls -l /mnt/TestData'
                 sh 'cat /mnt/TestData/TestData.txt'
             }
-	    /*
+	    */
             when
             {
                 anyOf { branch 'Feat_001_Start_Several_Jobs'}
@@ -69,7 +74,7 @@ pipeline
                 {
                     parallel(returnParallelJobs())
                 }
-            }*/
+            }
         }
     }
 }
