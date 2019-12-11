@@ -50,6 +50,8 @@ pipeline
             {
                 sh 'echo Testing first JenkinsFile'
 		stash includes: 'square_root.sh', name: 'square_root.sh'
+                sh 'ls -l /mnt'
+                sh 'ls -l /mnt/TestData'
 		stash includes: '/mnt/TestData', name: 'TestDataFolder'
             }
         }
